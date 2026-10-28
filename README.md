@@ -36,4 +36,4 @@ Web Service conectado al repo · Build: `npm install` · Start: `npm start` · a
 En Atlas, permitir el acceso desde `0.0.0.0/0` (Network Access).
 
 ## Autores
-Equipo IDFC201
+Ernesto Valdés González, IDFC302.
