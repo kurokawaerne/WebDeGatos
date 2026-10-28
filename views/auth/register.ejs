@@ -1,0 +1,14 @@
+<form class="form" method="post" action="/register">
+  <h1>Crear cuenta</h1>
+  <% if (errors.length) { %><ul class="errors"><% errors.forEach((e) => { %><li><%= e %></li><% }) %></ul><% } %>
+  <label for="username">Usuario</label>
+  <input id="username" name="username" minlength="3" maxlength="20" required value="<%= values.username || '' %>">
+  <label for="email">Correo</label>
+  <input id="email" type="email" name="email" required value="<%= values.email || '' %>">
+  <label for="password">Contraseña (mínimo 8 caracteres)</label>
+  <input id="password" type="password" name="password" minlength="8" required>
+  <div class="row">
+    <button class="btn" type="submit">Crear cuenta</button>
+    <a class="btn ghost" href="/login">Ya tengo cuenta</a>
+  </div>
+</form>

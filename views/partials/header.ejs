@@ -1,0 +1,15 @@
+<header class="top"><div class="wrap">
+  <a class="brand" href="/photos">Web<b>De</b>Gatos</a>
+  <nav>
+    <a href="/photos">Galería</a>
+    <% if (user) { %>
+      <a href="/photos?mine=1">Mis fotos</a>
+      <a class="btn" href="/photos/new">Subir foto</a>
+      <span class="muted"><%= user.username %><%= user.role === 'admin' ? ' (admin)' : '' %></span>
+      <form class="inline" method="post" action="/logout"><button class="btn ghost" type="submit">Salir</button></form>
+    <% } else { %>
+      <a href="/login">Entrar</a>
+      <a class="btn" href="/register">Crear cuenta</a>
+    <% } %>
+  </nav>
+</div></header>

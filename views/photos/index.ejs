@@ -1,0 +1,28 @@
+<% const link = (n) => '/photos?' + new URLSearchParams({ ...(q ? { q } : {}), ...(mine ? { mine: 1 } : {}), page: n, limit }); %>
+<h1><%= mine ? 'Tus gatos' : 'Gatos del momento' %></h1>
+<form class="tools" method="get" action="/photos">
+  <% if (mine) { %><input type="hidden" name="mine" value="1"><% } %>
+  <input type="search" name="q" value="<%= q %>" placeholder="Busca por título o nombre del gato" aria-label="Buscar">
+  <button class="btn" type="submit">Buscar</button>
+</form>
+
+<% if (!items.length) { %>
+  <div class="empty">
+    <p><%= q ? 'Ningún gato coincide con tu búsqueda.' : 'Todavía no hay fotos.' %></p>
+    <a class="btn" href="/photos/new">Sube la primera foto</a>
+  </div>
+<% } else { %>
+  <ul class="gallery">
+    <% items.forEach((p) => { %>
+      <li>
+        <a href="/photos/<%= p.id %>"><img src="<%= p.imageUrl %>" alt="<%= p.title %>" loading="lazy"></a>
+        <div class="cap"><strong><%= p.title %></strong><span class="muted">@<%= p.owner.username %></span></div>
+      </li>
+    <% }) %>
+  </ul>
+  <nav class="pager" aria-label="Paginación">
+    <a class="btn ghost <%= page <= 1 ? 'off' : '' %>" href="<%= link(page - 1) %>">Anterior</a>
+    <span class="muted">Página <%= page %> de <%= pages %></span>
+    <a class="btn ghost <%= page >= pages ? 'off' : '' %>" href="<%= link(page + 1) %>">Siguiente</a>
+  </nav>
+<% } %>

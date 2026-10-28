@@ -1,0 +1,18 @@
+<article class="detail">
+  <img src="<%= photo.imageUrl %>" alt="<%= photo.title %>">
+  <div>
+    <h1><%= photo.title %></h1>
+    <% if (photo.catName) { %><p><strong>Gato:</strong> <%= photo.catName %></p><% } %>
+    <% if (photo.description) { %><p><%= photo.description %></p><% } %>
+    <p class="muted">Subida por @<%= photo.owner.username %> el <%= photo.createdAt.toLocaleDateString('es-ES') %></p>
+    <div class="row">
+      <a class="btn ghost" href="/photos">Volver a la galería</a>
+      <% if (photo.canEdit(user)) { %><a class="btn" href="/photos/<%= photo.id %>/edit">Editar</a><% } %>
+      <% if (photo.canDelete(user)) { %>
+        <form class="inline" method="post" action="/photos/<%= photo.id %>?_method=DELETE" data-confirm="¿Borrar esta foto? No se puede deshacer.">
+          <button class="btn danger" type="submit">Borrar</button>
+        </form>
+      <% } %>
+    </div>
+  </div>
+</article>

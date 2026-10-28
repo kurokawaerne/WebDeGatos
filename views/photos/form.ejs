@@ -1,0 +1,23 @@
+<form class="form" method="post" enctype="multipart/form-data"
+      action="<%= editing ? '/photos/' + photo.id + '?_method=PUT' : '/photos' %>">
+  <h1><%= editing ? 'Editar foto' : 'Sube un gato' %></h1>
+  <% if (errors.length) { %><ul class="errors"><% errors.forEach((e) => { %><li><%= e %></li><% }) %></ul><% } %>
+
+  <label for="title">Título</label>
+  <input id="title" name="title" maxlength="80" required value="<%= photo.title || '' %>">
+
+  <label for="catName">Nombre del gato (opcional)</label>
+  <input id="catName" name="catName" maxlength="40" value="<%= photo.catName || '' %>">
+
+  <label for="description">Descripción (opcional)</label>
+  <textarea id="description" name="description" rows="4" maxlength="500"><%= photo.description || '' %></textarea>
+
+  <label for="image"><%= editing ? 'Cambiar imagen (opcional)' : 'Imagen (máx. 5 MB)' %></label>
+  <input id="image" type="file" name="image" accept="image/jpeg,image/png,image/webp,image/gif" <%= editing ? '' : 'required' %>>
+  <% if (editing && photo.imageUrl) { %><img class="preview" src="<%= photo.imageUrl %>" alt="Imagen actual"><% } %>
+
+  <div class="row">
+    <button class="btn" type="submit"><%= editing ? 'Guardar cambios' : 'Publicar' %></button>
+    <a class="btn ghost" href="/photos">Cancelar</a>
+  </div>
+</form>
