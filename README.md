@@ -15,7 +15,6 @@ Aplicación web full-stack para publicar fotos de gatos, con Node.js, Express y 
 - Paginación y búsqueda (`/photos?q=negro&page=2&limit=9`)
 - Vistas dinámicas con EJS (layout + partials + mensajes flash)
 - Manejo global de errores
-- Desplegada en Render.com
 
 ## Tecnologías
 Node.js · Express 5 · Mongoose · JWT + bcrypt · EJS · Helmet · express-validator · multer · Cloudinary
