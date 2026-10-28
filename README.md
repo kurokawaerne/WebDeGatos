@@ -2,6 +2,12 @@
 
 Aplicación web full-stack para publicar fotos de gatos, con Node.js, Express y MongoDB.
 
+## Capturas de pantalla
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/26201ce9-a632-4f31-8066-46caa77e25ca" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1f31858e-3285-493d-ab6b-7b09ea98bd63" />
+
+
 ## Funcionalidades
 - Registro y login con JWT (cookie `httpOnly`) y contraseñas con bcrypt
 - CRUD de fotos con roles: `user` gestiona sus fotos, `admin` puede borrar cualquiera
